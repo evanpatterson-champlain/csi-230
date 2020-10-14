@@ -1,5 +1,10 @@
 #!/bin/bash
-#comments go here
+
+# file hostlookup.sh
+# iteration
+# author evan patterson
+# lab 6.2
+# date 10/13/2020
 
 filename="$1"
 

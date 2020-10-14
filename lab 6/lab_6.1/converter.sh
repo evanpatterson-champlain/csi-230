@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# converter.sh
+# iteration
+# author evan patterson
+# lab 6.2
+# date 10/13/2020
+
 usage()
 {
   echo "$0 usage: [-f input filed] [-c U(pper) or L(lower)]"
