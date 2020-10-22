@@ -63,6 +63,7 @@ do
   pass=$(perl -e 'print crypt($ARGV[0], "password")' $randPass)
 
   if [ $(getent passwd "$usernm") ]; then
+    echo ${usernm}:$randPass | chpasswd
     echo "Changing password for ${usernm}"
   else
     useradd -m -p "$pass" ${usernm}
