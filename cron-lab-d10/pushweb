@@ -1,0 +1,20 @@
+#!/bin/bash
+# file: pushweb
+# brief:  send info to aws server, and email
+# author: evan.patterson
+# project: cron-lab
+# date: 11/1/2020
+
+AWSHOST="ec2-54-159-199-12.compute-1.amazonaws.com"
+AWSUSER="push-web"
+LOCALDIR="web-content"
+
+cd /root/cron-lab
+
+rsync -e "ssh -i keys/push-web" -vraO --no-perms --delete --chmod=660 --chown=push-web:www-data "${LOCALDIR}/" "${AWSUSER}@${AWSHOST}":
+
+message="web content pushed to ${AWSHOST}"
+
+logger -t $0 "${message}"
+
+echo "${message}" | mail -s "PushWeb" evan.patterson01@mymail.champlain.edu
