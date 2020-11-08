@@ -2,6 +2,17 @@
 #include<limits>
 
 
+// returns a random element from a vector
+template<typename T>
+T randomElement(std::vector<T> vec) {
+        size_t ind = rand() % vec.size();
+        return vec[ind];
+}
+
+template std::string randomElement<std::string>(std::vector<std::string>);
+
+
+
 // returns the sum of all elements
 double sum(std::vector<double> vec) {
 	double x = 0; // set initial value to zero
