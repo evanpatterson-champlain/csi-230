@@ -19,7 +19,7 @@
  * @param inFile ifstream to an opened and validated csv file
  * @param kmlFileName name of kml file
 */
-int parseCSV(std::ifstream& inFile, std::string kmlFileName);
+int parseCSV(std::ifstream& inFile, const std::string& kmlFileName);
 
 
 

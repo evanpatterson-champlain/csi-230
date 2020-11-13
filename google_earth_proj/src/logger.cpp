@@ -8,15 +8,18 @@
 
 #include"logger.h"
 #include<unistd.h>
+#include<iostream>
 
 using namespace std;
+
+
 
 // this function creates a discrete syslog message
 // date: 11/11/2020
 // returns a boolean indicating the message was written
 // param1: string containing syslog message
 // param2: ofstream reference, validation of this filename is expected
-bool log(std::string msg, std::ofstream& logFile){
+bool log(std::string msg, std::ofstream& logFile, std::string programName){
     string strTime;
 
     //get the time
@@ -31,9 +34,13 @@ bool log(std::string msg, std::ofstream& logFile){
     }
 
     pid_t pid = getpid();
+    
+    char hostName[1024];
+    hostName[1023] = '\0';
+    gethostname(hostName, 1023);
 
     if(logFile){
-        logFile << strTime << "" << "[" << pid << "]: " << msg << endl;
+        logFile << strTime << hostName << ' ' << programName << '[' << pid << "]: " << msg << '\n';
         return true;
     }
     else{
