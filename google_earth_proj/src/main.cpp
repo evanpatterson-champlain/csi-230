@@ -17,8 +17,11 @@ using namespace std;
 
 // code for deliverable 1
 // displays args for count and logFile
-// saving it just in case
-void deliverable1Code(int argc, char* argv[]){
+// saving it just in case I need to
+// returns whether there was an error
+// param1: number of arguments
+// param2: list of arguments as cstrings
+int deliverable1Code(int argc, char* argv[]){
     int opt{};
     bool countFlag{false};
     bool logFlag{false};
@@ -64,8 +67,10 @@ void deliverable1Code(int argc, char* argv[]){
 
     }
     else{
+        optErr = true;
         cout << "flags not set" << endl;
     }
+    return optErr;
 }
 
 
@@ -75,8 +80,12 @@ void deliverable1Code(int argc, char* argv[]){
 
 
 
-
+// main function
+// returns whether there was an error
+// param1: number of arguments
+// param2: list of arguments as cstrings
 int main(int argc, char* argv[]) {
+    //return deliverable1Code(argc, argv);
     int opt{};
     bool kmlFlag{false};
     bool logFlag{false};
